@@ -45,31 +45,6 @@
     </style>
 </head>
 <body>
-    <nav>
-        <style>
-            nav {
-                background: #333;
-                color: white;
-                padding: 10px;
-                text-align: center;
-                margin-bottom: 20px;
-            }
-            nav a {
-                color: white;
-                text-decoration: none;
-                margin: 0 15px;
-                font-weight: bold;
-            }
-            nav a:hover {
-                text-decoration: underline;
-            }
-        </style>
-        <a href="index.html">Syllabus Tracker</a>
-        <a href="weightage_mains.html">Mains Weightage Wise Calculator</a>
-        <a href="advanced_syllabus.html">Adv. Syllabus Calculator</a>
-        <a href="advanced_weightage.html">Adv. Weightage Calculator</a>
-    </nav>
-
     <div class="container">
         <h1>JEE Syllabus Tracker</h1>
 
@@ -155,7 +130,7 @@
             <label><input type="checkbox" value="3"> Probability</label><br>
         </div>
 
-        <button onclick="calculatePercentage()">Calculate Percentage</button>
+        <button onclick="calculateWeightage()">Calculate Weightage</button>
 
         <div class="progress-container">
             <div class="progress-bar" id="progressBar"></div>
@@ -165,7 +140,7 @@
     </div>
 
     <script>
-        function calculatePercentage() {
+        function calculateWeightage() {
             const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
 
             let totalWeightage = 0;
@@ -176,15 +151,18 @@
                 completedWeightage += parseInt(checkbox.value);
             });
 
-            // Total weightage for JEE Main (for example purposes)
-            totalWeightage = 100; // Total weightage is considered as 100 for simplicity
+            // Total weightage for all chapters
+            const totalWeightagePhysics = 42; // Sum of all Physics chapter weights
+            const totalWeightageChemistry = 48; // Sum of all Chemistry chapter weights
+            const totalWeightageMathematics = 52; // Sum of all Mathematics chapter weights
+            totalWeightage = totalWeightagePhysics + totalWeightageChemistry + totalWeightageMathematics; // Overall total weightage
 
-            // Calculate the percentage of the syllabus completed
+            // Calculate the percentage of weightage completed
             const percentageCompleted = (completedWeightage / totalWeightage) * 100;
 
             // Update the progress bar width and result text
             document.getElementById('progressBar').style.width = percentageCompleted + '%';
-            document.getElementById('result').innerText = `You have completed ${percentageCompleted.toFixed(2)}% of the JEE syllabus.`;
+            document.getElementById('result').innerText = `You have completed ${percentageCompleted.toFixed(2)}% of the JEE syllabus weightage.`;
         }
     </script>
 </body>
